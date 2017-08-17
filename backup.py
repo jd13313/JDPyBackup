@@ -2,6 +2,11 @@ import os
 import datetime
 import tarfile
 
+
+'''
+    List of directories to be backed up and their names
+'''
+
 backup_list = [
     {
         'path': 'C:\\Users\Jeremy\Documents',
@@ -41,6 +46,9 @@ backup_list = [
     }
 ]
 
+'''
+    Generate target directory if it doesn't exist
+'''
 
 current_date = datetime.datetime.now()
 destination_dir = 'Z:\Backups\\' + current_date.strftime('%Y/%m/%d')
@@ -48,6 +56,9 @@ destination_dir = 'Z:\Backups\\' + current_date.strftime('%Y/%m/%d')
 if not os.path.exists(destination_dir):
     os.makedirs(destination_dir)
 
+'''
+    Iterate through backup list, compressing directories and then moving them to Z drive for future sync to Google Drive.
+'''
 for dir in backup_list:
     print('Backing up ' + dir['path'] + '...')
 
